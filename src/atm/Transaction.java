@@ -23,16 +23,19 @@ import java.util.Scanner;
 
 /**
  *
- * @author Zarathustra
+ * @author Zarathustra aka Kevin
  */
 
-public class ATM {
+public class Transaction {
 
     static Scanner keyboard = new Scanner(System.in);
     static String acctNum, pwd, result;
-    static double oldBalance, newBalance, deposit, withdraw, currentBalance;
-    static int choose;
-
+    static double oldBalance, newBalance, deposit, withdraw, currentBalance; 
+    static int choose, accountNumber;
+    
+    
+    
+    
     public static void main(String[] args) {
         for (int run = 0; run < 3; run++) {
             System.out.println("Enter your account number");
@@ -53,6 +56,9 @@ public class ATM {
         menu();
     }
 
+    
+    
+    
     public static String checkID(String acctNum, Object pwd) {
         String result = "ERROR";
         /*
@@ -67,7 +73,10 @@ public class ATM {
         } else if (acctNum.equals("123123") && pwd.equals("password")) {
             result = "Zara";
         }
-        System.out.println("You are logged in as "+result);
+        if(!(result.equals("ERROR")) )
+        {
+            System.out.println("You are logged in as "+result);
+        }
         return result;
     }
 

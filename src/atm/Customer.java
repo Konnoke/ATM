@@ -7,8 +7,35 @@ package atm;
 
 /**
  *
- * @author Zarathustra
+ * @author Zarathustra aka Kevin
  */
+
 public class Customer {
+    String name, password;
+    int accountNumber;
+    double balance;
+    
+    public Customer(String name, String password, int accountNumber, double balance){
+        this.name = name;
+        this.password = password;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        
+    }
+    
+    
+    public String getName(){
+        return name;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
+    public int getAccountNumber(){
+        return accountNumber;
+    }
+    
+    
     
 }
