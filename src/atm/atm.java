@@ -12,10 +12,10 @@ package atm;
 public class atm {
 
     public static void main(String[] args) {
-        Account acct1 = new Account(101, 10000.00);
-        System.out.println("Account Balance: " + acct1.getBalance());
-
-        Withdrawal w = new Withdrawal(100, 100, acct1);
-        System.out.println("Account Balance: " + acct1.getBalance());
+        
+        //Account account1;
+        new Account(101, 10000.00).start();
+        
+        new Account(102, 9001.00).start();
     }
 }

@@ -8,14 +8,16 @@ import java.util.Set;
  *
  * @author Zarathustra aka Kevin Baik
  */
-public class Account {
+public class Account extends Thread{
 
     public int accountNumber;
     public double accountBalance;
-
+    public boolean ready;
+    
     public Account(int number, double initialBalance) {
         accountNumber = number;
         accountBalance = initialBalance;
+        ready = true;
     }
 
     public int getNumber() {
@@ -32,6 +34,14 @@ public class Account {
 
     public void setBalance(double balance) {
         accountBalance = balance;
+    }
+    
+    public void run() {
+        while(!ready){
+            Thread.yield();
+            
+        }
+        System.out.println(getBalance());
     }
 
 }

@@ -4,7 +4,7 @@ package atm;
  *
  * @author Zarathustra aka Kevin Baik
  */
-abstract public class Transaction {
+abstract public class Transaction extends Thread{
 
     protected int transactionNumber;
 
