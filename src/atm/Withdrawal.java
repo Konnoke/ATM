@@ -5,10 +5,11 @@ package atm;
  * @author Zarathustra aka Kevin Baik
  */
 
-public class Withdrawal extends Transaction {
+public class Withdrawal extends Transaction implements Runnable {
 
     private double amount;
     private Account account;
+     public boolean ready;
 
     public Withdrawal(int tNumber, double amt, Account acct) {
         super(tNumber);
@@ -26,4 +27,10 @@ public class Withdrawal extends Transaction {
         }
         account.setBalance(startingBalance - transAmount);
     }
+    
+    @Override
+    public void run() {
+        makeTransaction();
+    }
+    
 }
