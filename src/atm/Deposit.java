@@ -5,6 +5,8 @@
  */
 package atm;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Zarathustra
@@ -13,6 +15,8 @@ public class Deposit extends Transaction implements Runnable {
 
     private double amount;
     private Account acc;
+    private final ReentrantLock lock = new ReentrantLock();
+    
     public Deposit(int tnumber,double amount, Account acc) {
         super(tnumber);
         this.amount = amount;
@@ -30,7 +34,9 @@ public class Deposit extends Transaction implements Runnable {
 
     @Override
     public void run() {
+        lock.lock();
         makeTransaction();
+        lock.unlock();
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package atm;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Zarathustra aka Kevin Baik
@@ -15,15 +17,18 @@ public class atm {
         
         //Account account1;
         
+        ReentrantLock lock = new ReentrantLock();
+        
+        
         Account one = new Account(101, 10000.00);
-        System.out.println("Balance： " + one.getBalance());
+        System.out.println("Account One Balance： " + one.getBalance());
         
         
         Deposit deposit = new Deposit(102,200, one);
         Thread depositThread = new Thread(deposit);
         
         Account two = new Account(102, 9001.00);
-        System.out.println("Balance： " + two.getBalance());
+        System.out.println("Account Two Balance： " + two.getBalance());
         
         
         Withdrawal oneW = new Withdrawal(101,200, two);
@@ -36,6 +41,9 @@ public class atm {
         withdrawThread.start();
         depositThread.start();
         transactionThread.start();
+        
+        
+        
         
     }
 }

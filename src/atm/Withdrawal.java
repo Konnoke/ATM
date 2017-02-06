@@ -1,5 +1,7 @@
 package atm;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Zarathustra aka Kevin Baik
@@ -9,8 +11,9 @@ public class Withdrawal extends Transaction implements Runnable {
 
     private double amount;
     private Account account;
-     public boolean ready;
-
+    public boolean ready;
+    private final ReentrantLock lock = new ReentrantLock();
+    
     public Withdrawal(int tNumber, double amt, Account acct) {
         super(tNumber);
         amount = amt;
@@ -30,7 +33,11 @@ public class Withdrawal extends Transaction implements Runnable {
     
     @Override
     public void run() {
+        lock.lock();
+        
+        
         makeTransaction();
+        lock.unlock();
     }
     
 }

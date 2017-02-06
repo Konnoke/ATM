@@ -5,6 +5,8 @@
  */
 package atm;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Zarathustra
@@ -14,6 +16,8 @@ public class Transfer extends Transaction implements Runnable {
     private double amount;
     private Account sender;
     private Account receiver;
+    private final ReentrantLock lock = new ReentrantLock();
+    
     public Transfer(int tnumber,double amount,Account sender,Account receiver) {
         super(tnumber);
         this.amount = amount;
@@ -24,6 +28,9 @@ public class Transfer extends Transaction implements Runnable {
 
     @Override
     public void makeTransaction() {
+        
+        lock.lock();
+        
         if(amount > sender.getBalance())
         {
             System.out.println("You do not have enought balance");
@@ -44,6 +51,8 @@ public class Transfer extends Transaction implements Runnable {
                 System.out.println("Thread has been interrputed");
             }
         }
+        
+        lock.unlock();
     }
 
     @Override
