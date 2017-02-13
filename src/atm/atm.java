@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class atm {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         
         //Account account1;
         
@@ -39,8 +39,9 @@ public class atm {
         Thread transactionThread = new Thread(t);
         
         withdrawThread.start();
-        depositThread.start();
-        transactionThread.start();
+        depositThread.join();
+        transactionThread.join();
+        
         
         
         
