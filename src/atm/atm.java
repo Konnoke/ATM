@@ -16,7 +16,7 @@ public class atm {
     public static void main(String[] args) throws InterruptedException {
         
         //Account account1;
-        
+        boolean keepRunning = true;
         ReentrantLock lock = new ReentrantLock();
         
         
@@ -39,7 +39,9 @@ public class atm {
         Thread transactionThread = new Thread(t);
         
         withdrawThread.start();
-        depositThread.join();
+        depositThread.start();
+        depositThread.sleep(1000);
+        withdrawThread.sleep(420);
         transactionThread.join();
         
         
