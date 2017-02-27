@@ -5,12 +5,13 @@ package atm;
  * @author Zarathustra aka Kevin Baik
  */
 public abstract class Transaction {
-    protected int transNum;
-    protected int transactionNumber;
 
-    public Transaction(int tNumber) {
-        transactionNumber = tNumber;
-    }
+  protected int transNum;
+  protected int transactionNumber;
 
-    public abstract void makeTransaction();
+  public Transaction(int tNumber) {
+    transactionNumber = tNumber;
+  }
+
+  public abstract void makeTransaction();
 }

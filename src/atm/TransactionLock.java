@@ -12,15 +12,15 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Zarathustra
  */
 public class TransactionLock {
-    private final ReentrantLock lock = new ReentrantLock();
-    
-    public void method(){
-        try{
-            System.out.println("Locking thread");
-        } finally {
-            lock.unlock();
-        }
+
+  private final ReentrantLock lock = new ReentrantLock();
+
+  public void method() {
+    try {
+      System.out.println("Locking thread");
+    } finally {
+      lock.unlock();
     }
-    
-    
+  }
+
 }
